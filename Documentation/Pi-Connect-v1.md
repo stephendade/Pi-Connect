@@ -1,5 +1,7 @@
 # Documentation for Pi-Connect (V1)
 
+![Pi-Connect](3D_v1.png "Pi-Connect V1")
+
 ## Introduction
 
 The Pi-Connect is a HAT addon board for the Raspberry Pi that allows easy and reliable interfacing with
@@ -46,12 +48,71 @@ The Pi-Connect requires the following equipment:
   The Cube, Pixracer, Pixhawk 4 and others.
 
 ## Setup
+
+### Hardware
+
+The Pi-Connect board's power leads need to be soldered to the appropriate connector for the vehicle.
+
+Next the board should be mounted onto the Pi's 40-pin connector such that the telemetry and power
+connectors face towards the interior of the Pi.
+
+The telemetry connectors should be connected as required. The pinout of the JST-GH connectors allows
+for direct connection to the flight controller without any crossover cables required. If using ``/dev/ttySC0``,
+care should be taken to ensure the flight controller is not powered through the telemetry port as the current draw
+may overload the 5V rail on the Pi-Connect.
+
+The FTDI-style port (``/dev/ttySC1``) can be connected directly to devices such as Arduinos, noting that the port outputs
+5V - so a 5V compatible device is required.
+
+The 3 analogue ports can be connected to any 3.3V analogue sensor.
+
+###Software
 * Run the UART install script
 * Run the general script
 * Reboot
 
 ## Using
 * Power switch
+
+### UART Pinouts
+
+![Layout](Top_v1.png "Layout")
+
+The dots in the above diagram are the Pin 1 for the pinouts.
+
+``/dev/serial0``:
+
+Pin | Function
+--- | --- 
+1 | NC
+2 | Pi Rx
+3 | Pi Tx
+4 | NC
+5 | NC
+6 | Ground
+
+``/dev/ttySC0``:
+
+Pin | Function
+--- | --- 
+1 | +5V
+2 | Pi Rx
+3 | Pi Tx
+4 | Pi RTS
+5 | Pi CTS
+6 | Ground
+
+``/dev/ttySC1``:
+
+Pin | Function
+--- | --- 
+1 | Ground
+2 | Pi CTS
+3 | +5V
+4 | Pi Tx
+5 | Pi Rx
+6 | Pi RTS
+
 * UARTS - name and types
 * Analog ports - python or bash
 * Voltage montoring, resistor scaling
