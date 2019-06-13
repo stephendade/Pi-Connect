@@ -15,6 +15,8 @@ both the smallest and largest of vehicles.
 
 ## Features
 
+![Pi-Connect Layout](Diagram_v1.png "Pi-Connect V1 Layout")
+
 The Pi-Connect features:
 * Pi power supply
     * Wide input voltage (7 - 30V)
@@ -33,7 +35,7 @@ The Pi-Connect features:
     * 3 user ports for connection to analog sensors (3.3V max)
 
 It is 100% compliant with the Raspberry Pi HAT spec (using the uHAT size) and is
-compatible with the Raspberry Pi 2, 3 and Zero
+compatible with the Raspberry Pi 2, 3 and Zero.
 
 The board also features a power switch which safely switches off the Pi via issuing a shutdown
 signal. This ensures the Pi is cleanly shutdown and reduces the risk of system corruption.
@@ -57,19 +59,43 @@ Next the board should be mounted onto the Pi's 40-pin connector such that the te
 connectors face towards the interior of the Pi.
 
 The telemetry connectors should be connected as required. The pinout of the JST-GH connectors allows
-for direct connection to the flight controller without any crossover cables required. If using ``/dev/ttySC0``,
-care should be taken to ensure the flight controller is not powered through the telemetry port as the current draw
-may overload the 5V rail on the Pi-Connect.
+for direct connection to the flight controller without any crossover cables required. It is recommended to use
+the ``\dev\serial0`` port for connection to the flight controller.
+
+If using ``/dev/ttySC0`` with a flight controller, care should be taken to ensure the flight controller
+is not back powered through the telemetry  port as the current draw may overload the 5V rail on the Pi-Connect. This
+port is designed to be used with accessory devices (Arduino, other custom sensors) that require 5V power and a JST-GH conection.
 
 The FTDI-style port (``/dev/ttySC1``) can be connected directly to devices such as Arduinos, noting that the port outputs
 5V - so a 5V compatible device is required.
 
 The 3 analogue ports can be connected to any 3.3V analogue sensor.
 
-###Software
-* Run the UART install script
-* Run the general script
+### Software
+
+Several scripts are required to load the correct drivers for the Pi-Connect.
+
+For ease of use, ``git clone`` this repository to the Pi first and run the scripts from there.
+
+* Use the ``raspi-config`` program to disable I2C and enable SPI (under ``interfaces``)
+* Install the driver for the extra UARTS: [makedts.sh](../UART/makedts.sh)
+* Install the correct dtoverlays to the Pi: [Pi-Connect-v1.sh](../SetupScripts/Pi-Connect-v1.sh)
 * Reboot
+
+For the ADC there are two options for functionality. First is to use the GPIO python library. The
+other is to use the commandline.
+
+For the commandline option add the following line to ``/boot/config.txt``:
+
+```
+dtoverlay=mcp3008,spi0-0-present=true
+```
+
+After a reboot, the analogue port readings are available at ``/sys/bus/iio/devices/iio\:device0``
+
+```
+cat /sys/bus/iio/devices/iio\:device0/in_voltage0_raw
+```
 
 ## Using
 * Power switch
