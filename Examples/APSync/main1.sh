@@ -4,6 +4,9 @@
 set -e
 set -x
 
+# Get submodules
+git submodule update --init --recursive
+
 # need to run from home directory
 cd ~/
 
