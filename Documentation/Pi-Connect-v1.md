@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The Pi-Connect is a HAT addon board for the Raspberry Pi that allows easy and reliable interfacing with
+The Pi-Connect is a HAT addon board for the Raspberry Pi 2B/3B/Zero(W) that allows easy and reliable interfacing with
 popular flight controllers used in unmanned vehicles.
 
 It removes the complexity and risk of wiring up the telemetry and power connectors between the Pi and the 
@@ -35,7 +35,7 @@ The Pi-Connect features:
     * 3 user ports (A3, A4, A5) for connection to analog sensors (3.3V max)
 
 It is 100% compliant with the Raspberry Pi HAT spec (using the uHAT size) and is
-compatible with the Raspberry Pi 2, 3 and Zero.
+compatible with the Raspberry Pi 2, 3 (NOT the 3B+) and Zero.
 
 The board also features a power switch which safely switches off the Pi via issuing a shutdown
 signal. This ensures the Pi is cleanly shutdown and reduces the risk of system corruption.
@@ -45,7 +45,7 @@ signal. This ensures the Pi is cleanly shutdown and reduces the risk of system c
 The Pi-Connect requires the following equipment:
 
 * Power source of 7-30V, capable of supplying at least 15W
-* Raspberry Pi 2, 3, Zero, Zero W with Raspian.
+* Raspberry Pi 2B, 3B, Zero, Zero W with Raspian.
 * Flight controller with JST-GH telemetry connector (and cable). Examples include the 
   The Cube, Pixracer, Pixhawk 4 and others.
 
