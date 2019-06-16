@@ -1,4 +1,10 @@
 #!/bin/bash
+
+#requires the i2c-tools package
+# and i2c enabled
+# and "dtparam=i2c0=on" in /boot/config.txt
+# and bcm2835-v4l2 commented out in /etc/modules
+# and camera disabled
 cd ./hats/eepromutils
 make
 cd ../../

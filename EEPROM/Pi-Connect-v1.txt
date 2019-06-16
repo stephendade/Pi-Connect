@@ -60,6 +60,8 @@ back_power 2
 # Options for PULL: DEFAULT, UP, DOWN, NONE
 # NB GPIO0 and GPIO1 are reserved for ID EEPROM so cannot be set
 
+# Note, enabling the GPIO for serial0 actually disables the port!
+
 #         GPIO  FUNCTION  PULL
 #         ----  --------  ----
 #setgpio  2     INPUT     DEFAULT
@@ -74,8 +76,8 @@ setgpio   10    OUTPUT    DEFAULT #MOSI
 setgpio   11    OUTPUT    DEFAULT #SCLK
 #setgpio  12    INPUT     DEFAULT
 #setgpio  13    INPUT     DEFAULT
-setgpio   14    OUTPUT    DEFAULT #SERIAL0_TX
-setgpio   15    INPUT     DEFAULT #SERIAL0_RX
+#setgpio   14    OUTPUT    DEFAULT #SERIAL0_TX
+#setgpio   15    INPUT     DEFAULT #SERIAL0_RX
 #setgpio  16    INPUT     DEFAULT
 #setgpio  17    INPUT     DEFAULT
 #setgpio  18    INPUT     DEFAULT
