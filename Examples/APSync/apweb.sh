@@ -3,15 +3,15 @@
 set -e
 set -x
 
-rm -rf APWeb
+rm -rf ~/APWeb
 
 sudo apt install python-pip libtalloc-dev -y
 pip2 install future --user
 
-[ -d apstreamline ] || {
+[ -d ~/apstreamline ] || {
     git clone -b video_streaming https://github.com/shortstheory/APWeb.git
 }
-pushd APWeb
+pushd ~/APWeb
  git submodule update --init --recursive
  make
  sudo cp ../APWeb.service /etc/systemd/system/APWeb.service
