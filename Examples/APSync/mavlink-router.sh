@@ -17,8 +17,10 @@ pushd ~/mavlink-router
  ./autogen.sh && ./configure CFLAGS='-g -O2' --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib64 --prefix=/usr
  make
  sudo make install
- sudo mkdir -p /etc/mavlink-router
- sudo cp ../mavlink-router.conf /etc/mavlink-router/main.conf
- sudo systemctl enable mavlink-router.service
- sudo systemctl start mavlink-router.service
 popd
+
+sudo mkdir -p /etc/mavlink-router
+sudo cp mavlink-router.conf /etc/mavlink-router/main.conf
+sudo systemctl enable mavlink-router.service
+sudo systemctl start mavlink-router.service
+

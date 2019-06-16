@@ -10,7 +10,7 @@ pip3 install meson --user
 sudo modprobe bcm2835-v4l2
 echo "bcm2835-v4l2" | sudo tee -a /etc/modules >/dev/null
 
-[ -d ~/apstreamline ] || {
+[ -d ~/APStreamline ] || {
     git clone https://github.com/shortstheory/adaptive-streaming.git APStreamline
 }
 pushd ~/APStreamline

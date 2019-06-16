@@ -7,9 +7,6 @@ set -x
 # Get submodules
 git submodule update --init --recursive
 
-# need to run from home directory
-cd ~/
-
 ## Raspi-Config - camera, serial port, ssh
 sudo raspi-config nonint do_expand_rootfs
 sudo raspi-config nonint do_camera 0
@@ -32,7 +29,10 @@ echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/config.txt >/dev/null
 echo "dtoverlay=gpio-poweroff" | sudo tee -a /boot/config.txt >/dev/null
 
 ## UART Config
-../../UART/makedts.sh
+pushd ../../UART/
+  ./makedts.sh
+popd
+
 echo "" | sudo tee -a /boot/config.txt >/dev/null
 echo "# Extra UARTs" | sudo tee -a /boot/config.txt >/dev/null
 echo "dtoverlay=sc16is752-spi0,int_pin=24" | sudo tee -a /boot/config.txt >/dev/null

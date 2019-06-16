@@ -4,9 +4,6 @@
 set -e
 set -x
 
-## need to run from home directory
-cd ~/
-
 ## Update everything
 sudo apt update
 sudo apt upgrade -y
