@@ -53,10 +53,12 @@ The Pi-Connect requires the following equipment:
 
 ### Hardware
 
+![Pi-Connect Installed](Installed_v1.jpg "Pi-Connect Installed")
+
 The Pi-Connect board power leads need to be soldered to the appropriate connector for the vehicle.
 
 Next the board should be mounted onto the Pi's 40-pin connector such that the telemetry and power
-connectors face towards the interior of the Pi.
+connectors face towards the interior of the Pi (as per the above picture).
 
 The telemetry connectors should be connected as required. The pinout of the JST-GH connectors allows
 for direct connection to the flight controller without any crossover cables required. It is recommended to use
