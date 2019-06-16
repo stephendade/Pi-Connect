@@ -179,7 +179,7 @@ The [APSync](http://ardupilot.org/dev/docs/apsync-intro.html) companion computer
 with the Pi-Connect. A disk image for the Pi-Connect can be downloaded
 from xxx, or installed via script from [here](../Examples/APSync)
 
-Note this assumes that the flight controller is connected to the ``dev/serial0`` port at a baud rate of 912600. Ensure
+Note this assumes that the flight controller is connected to the ``dev/serial0`` port at a baud rate of 921600. Ensure
 the flight controller's telemetry port is configured to output MAVLink data at that baud rate.
 
 ### Analog port reading
