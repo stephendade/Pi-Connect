@@ -7,7 +7,7 @@ set -e
 set -x
 
 TIMESTAMP="$(date -u '+%Y%m%d%H%M%S')"
-FILENAME="apsync-KakutePi-$TIMESTAMP.img"
+FILENAME="apsync-PiConnect-$TIMESTAMP.img"
 DEVICE=/dev/mmcblk0
 time (sudo dd status=progress if=$DEVICE of=$FILENAME status=progress) # ~1G/minute
 sudo ./pishrink.sh $FILENAME # from https://github.com/Drewsif/PiShrink
