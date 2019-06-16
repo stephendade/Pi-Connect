@@ -6,10 +6,10 @@ set -x
 sudo apt install autoconf automake libtool -y
 
 ## Git clone mavlink-router
-rm -rf ~/mavlink-router
-[ -d ~/mavlink-router ] || {
-    git clone https://github.com/intel/mavlink-router.git
-}
+pushd ~/
+  rm -rf ./mavlink-router
+  git clone https://github.com/intel/mavlink-router.git
+popd
 
 ## and build them
 pushd ~/mavlink-router

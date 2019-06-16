@@ -3,14 +3,14 @@
 set -e
 set -x
 
-rm -rf ~/APWeb
-
 sudo apt install python-pip libtalloc-dev -y
 pip2 install future --user
 
-[ -d ~/APWeb ] || {
-    git clone -b video_streaming https://github.com/shortstheory/APWeb.git
-}
+pushd ~/
+  rm -rf ./APWeb
+  git clone -b video_streaming https://github.com/shortstheory/APWeb.git
+popd
+
 pushd ~/APWeb
  git submodule update --init --recursive
  make
