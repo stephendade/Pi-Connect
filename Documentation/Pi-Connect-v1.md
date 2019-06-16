@@ -177,7 +177,7 @@ Note the 0.4V in the above equation is the voltage drop due to the reverse prote
 
 The [APSync](http://ardupilot.org/dev/docs/apsync-intro.html) companion computer software is compatible 
 with the Pi-Connect. A disk image for the Pi-Connect can be downloaded
-from xxx, or installed via script from [here](../Examples/APSync)
+from [here](https://drive.google.com/open?id=1f36Nkk8fJqZTni-5aqQWje96hAeIqPkg), or installed via script from [here](../Examples/APSync)
 
 Note this assumes that the flight controller is connected to the ``dev/serial0`` port at a baud rate of 921600. Ensure
 the flight controller's telemetry port is configured to output MAVLink data at that baud rate.
