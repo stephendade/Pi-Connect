@@ -187,3 +187,10 @@ the flight controller's telemetry port is configured to output MAVLink data at t
 An example Python script for using the MCP3008 ADC is available [here](../Examples/mcp.py). It requires the 
 spidev package. This can be installed via the ``sudo apt install python-spidev`` or 
 ``sudo apt install python3-spidev``, depending on your Python version.
+
+# Known Issues
+
+The following issues are known with the Pi-Connect v1:
+
+* Reversing the polarity on the power input will damage the power switch
+* Short circuit on the UART power will reboot the Pi
