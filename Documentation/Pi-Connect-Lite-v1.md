@@ -71,7 +71,7 @@ The power switch will perform a safe software shutdown of the Raspberry Pi befor
 If an external power switch is desired, ensure the switch is connected to the Ext Switch ports on the
 Pi-Connect Lite board and the Int|Ext trace is cut on the Int side and soldered on the Ext side.
 
-![External Switch Connection](ExtSwitch.png "External Switch Connection")
+![External Switch Connection](ExtSwitch.jpg "External Switch Connection")
 
 
 The switch must be of a latching type with the centre pin common, [like these switches](https://au.element14.com/w/c/switches-relays/switches/toggle-switches?ost=switch).
