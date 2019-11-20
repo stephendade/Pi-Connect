@@ -14,14 +14,14 @@ both the smallest and largest of vehicles.
 
 ## Features
 
-![Pi-Connect Layout](Diagram_v1.png "Pi-Connect V1 Layout")
+![Pi-Connect Lite Layout](PiConnectLiteLayout.png "Pi-Connect Lite V1 Layout")
 
 The Pi-Connect features:
 * Pi power supply
     * Wide input voltage (7 - 30V)
     * Reverse input protection
     * ESD protected
-    * Supplies a full 5V at 3A for the Pi and accessories
+    * Supplies a full 5.1V at 3A for the Pi and accessories
     * Overcurrent protection
     * Short circuit protection
 * 1x Telemetry (serial) port using a JST-GH 6-pin Dronecode standard connector (``/dev/serial0``)
@@ -55,31 +55,32 @@ for direct connection to the flight controller without any crossover cables requ
 
 ### Software
 
-Several scripts are required to load the correct drivers for the Pi-Connect.
+A scripts is required to configure the power switch action and serial port.
 
-For ease of use, ``git clone`` this repository to the Pi first and run the scripts from there.
+For ease of use, ``git clone`` this repository to the Pi first and run the script from there.
 
-* Install the correct dtoverlays to the Pi: [Pi-Connect-Lite-v1.sh](../SetupScripts/Pi-Connect-Lite-v1.sh)
+* Install the configuration to the Pi: [Pi-Connect-Lite-v1.sh](../SetupScripts/Pi-Connect-Lite-v1.sh)
 * Reboot
 
 ## Using
-###  Power switch
+
+### Power switch
 
 The power switch will perform a safe software shutdown of the Raspberry Pi before cutting power.
 
 If an external power switch is desired, ensure the switch is connected to the Ext Switch ports on the
 Pi-Connect Lite board and the Int|Ext trace is cut on the Int side and soldered on the Ext side.
 
-The switch must be of a latching type with the centre pin common, ie:
-<pic>
+![External Switch Connection](ExtSwitch.png "External Switch Connection")
+
+
+The switch must be of a latching type with the centre pin common, [like these switches](https://au.element14.com/w/c/switches-relays/switches/toggle-switches?ost=switch).
 
 ### UART Pinouts
 
-![Layout](Top_v1.png "Layout")
-
-The dots in the above diagram are the Pin 1 for the pinouts.
-
 ``/dev/serial0`` (unpowered, JST-GH):
+
+Pin 1 is closest to the power switch
 
 Pin | Function
 --- | --- 
@@ -90,14 +91,31 @@ Pin | Function
 5 | NC
 6 | Ground
 
+### Raspberry Pi Pins Used
+
+The Pi-Connect uses the following Pins on the 40-pin header of the Raspberry Pi:
+
+Pin | Function
+--- | --- 
+2 | +5V
+4 | +5V
+5 | Power Switch
+8 | Pi Serial Tx
+10 | Pi Serial Rx
+27 | EEPROM
+28 | EEPROM
+37 | Power Switch
+
+### Power Port
+
+The power port is a [2-pin Molex Nano-fit](https://www.molex.com/molex/products/family?key=nanofit_power_connectors&channel=products&chanName=family&pageTitle=Introduction&utm_source=dpb&utm_medium=lit&utm_campaign=general). Part number [1053071202](https://www.molex.com/molex/products/datasheet.jsp?part=active/1053071202_CRIMP_HOUSINGS.xml) is the compatible plug.
 
 ## Software examples
 
 ### APSync
 
 The [APSync](http://ardupilot.org/dev/docs/apsync-intro.html) companion computer software is compatible 
-with the Pi-Connect. A disk image for the Pi-Connect can be downloaded
-from [here](https://drive.google.com/open?id=1f36Nkk8fJqZTni-5aqQWje96hAeIqPkg), or installed via script from [here](../Examples/APSync)
+with the Pi-Connect. It can be installed via script from [here](../Examples/APSync)
 
 Note this assumes that the flight controller is connected to the ``dev/serial0`` port at a baud rate of 921600. Ensure
 the flight controller's telemetry port is configured to output MAVLink data at that baud rate.
